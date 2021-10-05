@@ -47,11 +47,11 @@ while run:
             elif quit_button.collision(cursor):
                 run = False
     
-    if playerY >= window_height:
+    if playerY >= 400:
         playerY -= 1
     elif playerY < 0:
         playerY += 1
-    elif playerX >= window_width:
+    elif playerX >= 400:
         playerX -= 1
     elif playerX < 0:
         playerX += 1
