@@ -2,11 +2,11 @@ import pygame
 from pygame import rect 
 from pygame.locals import *
 
-from resources.LabelText import LabelText
+from LabelText import LabelText
 #import random
 pygame.init()  
-white = (255, 255, 255)  
-black = (0, 0, 0)  
+background = (255, 255, 255)  
+black = (0, 0, 0)
 window = pygame.display.set_mode((400, 400))  
 pygame.display.set_caption('Game Testing')  
 #load images
@@ -25,12 +25,12 @@ while run:
         if event.type == pygame.MOUSEBUTTONDOWN:
             cursor = pygame.mouse.get_pos()
             if start_button.collision(cursor):
-                pass
+                background = (0, 0, 0)
             elif quit_button.collision(cursor):
                 run = False
 
     pygame.display.update()  
-    window.fill((255, 255, 255))
+    window.fill(background)
     window.blit(start_button.surface(), (start_button.get_x(), start_button.get_y()))
     window.blit(quit_button.surface(), (quit_button.get_x(), quit_button.get_y()))
    
