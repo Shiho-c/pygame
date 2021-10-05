@@ -18,6 +18,8 @@ corbel_font = pygame.font.SysFont('Corbel',35)
 start_button = LabelText("Start", corbel_font, black, window.get_width() / 2, window.get_height() / 2 - 50 )
 quit_button = LabelText("Quit", corbel_font, black, window.get_width() / 2, start_button.get_y() + start_button.get_height() )
 player = rect.Rect((50, 40, 15, 15))
+playerX, playerY = 0, 0
+movementSpeed = 5
 game_screen = False
 # infinite loop  
 run = True 
@@ -25,13 +27,13 @@ while run:
     for event in pygame.event.get():  
         key = pygame.key.get_pressed()
         if key[pygame.K_LEFT]:
-           player.move_ip(-1, 0)
+           playerX -= movementSpeed
         if key[pygame.K_RIGHT]:
-           player.move_ip(1, 0)
+           playerX += movementSpeed
         if key[pygame.K_UP]:
-           player.move_ip(0, -1)
+           playerY -= movementSpeed
         if key[pygame.K_DOWN]:
-           player.move_ip(0, 1)
+           playerY += movementSpeed
         if event.type == pygame.QUIT:  
             run = False  
         
@@ -47,7 +49,7 @@ while run:
     window.blit(start_button.surface(), (start_button.get_x(), start_button.get_y()))
     window.blit(quit_button.surface(), (quit_button.get_x(), quit_button.get_y()))
     if game_screen:
-        pygame.draw.rect(window, (0, 0, 128), player)
+        pygame.draw.rect(window, (255, 0, 0), (playerX, playerY, 50, 50))
     clock.tick(60)
     pygame.display.update()
   
