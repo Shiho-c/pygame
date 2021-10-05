@@ -7,7 +7,9 @@ from LabelText import LabelText
 pygame.init()  
 background = (255, 255, 255)  
 black = (0, 0, 0)
-window = pygame.display.set_mode((400, 400))  
+window_height = 400
+window_width = 400
+window = pygame.display.set_mode((window_height, window_width))  
 pygame.display.set_caption('Game Testing')  
 #load images
 game_screenBackground = pygame.image.load('resources/ground.jpg')
@@ -44,10 +46,15 @@ while run:
                 game_screen = True
             elif quit_button.collision(cursor):
                 run = False
-        if player == window.get_height:
-            playerY == 0
-        if player == window.get_width:
-            playerX == 0
+    
+    if playerY >= window_height:
+        playerY -= 1
+    elif playerY < 0:
+        playerY += 1
+    elif playerX >= window_width:
+        playerX -= 1
+    elif playerX < 0:
+        playerX += 1
 
     window.fill(background)
     window.blit(start_button.surface(), (start_button.get_x(), start_button.get_y()))
