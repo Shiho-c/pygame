@@ -36,8 +36,10 @@ while run:
             if start_button.collision(cursor):
                 background = (0, 0, 0)
                 game_screen = True
+                pygame.mixer.music.stop()
             elif quit_button.collision(cursor):
                 run = False
+                pygame.mixer.music.stop()
     key = pygame.key.get_pressed()
         
     if playerX + player.get_width() >= window_width:
