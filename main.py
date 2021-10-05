@@ -19,7 +19,7 @@ corbel_font = pygame.font.SysFont('Corbel',35)
   
 start_button = LabelText("Start", corbel_font, black, window.get_width() / 2, window.get_height() / 2 - 50 )
 quit_button = LabelText("Quit", corbel_font, black, window.get_width() / 2, start_button.get_y() + start_button.get_height() )
-player = rect.Rect((50, 40, 15, 15))
+player = pygame.image.load('resources/player.png')
 playerX, playerY = 0, 0
 movementSpeed = 5
 game_screen = False
@@ -27,18 +27,6 @@ game_screen = False
 run = True 
 while run:
     for event in pygame.event.get():  
-        key = pygame.key.get_pressed()
-        if key[pygame.K_LEFT]:
-           playerX -= movementSpeed
-        if key[pygame.K_RIGHT]:
-           playerX += movementSpeed
-        if key[pygame.K_UP]:
-           playerY -= movementSpeed
-        if key[pygame.K_DOWN]:
-           playerY += movementSpeed
-        if event.type == pygame.QUIT:  
-            run = False  
-        
         if event.type == pygame.MOUSEBUTTONDOWN:
             cursor = pygame.mouse.get_pos()
             if start_button.collision(cursor):
@@ -46,7 +34,17 @@ while run:
                 game_screen = True
             elif quit_button.collision(cursor):
                 run = False
-    
+    key = pygame.key.get_pressed()
+    if key[pygame.K_LEFT]:
+        playerX -= movementSpeed
+    if key[pygame.K_RIGHT]:
+        playerX += movementSpeed
+    if key[pygame.K_UP]:
+        playerY -= movementSpeed
+    if key[pygame.K_DOWN]:
+        playerY += movementSpeed
+    if event.type == pygame.QUIT:  
+        run = False  
     if playerY >= 400:
         playerY -= 1
     elif playerY < 0:
@@ -56,12 +54,14 @@ while run:
     elif playerX < 0:
         playerX += 1
 
-    window.fill(background)
-    window.blit(start_button.surface(), (start_button.get_x(), start_button.get_y()))
-    window.blit(quit_button.surface(), (quit_button.get_x(), quit_button.get_y()))
     if game_screen:
         window.blit(game_screenBackground, game_screenBackground.get_rect())
-        pygame.draw.rect(window, (255, 0, 0), (playerX, playerY, 50, 50))
+        window.blit(player, (playerX, playerY))
+        #pygame.draw.rect(window, (255, 0, 0), (playerX, playerY, 50, 50))
+    else:
+        window.fill(background)
+        window.blit(start_button.surface(), (start_button.get_x(), start_button.get_y()))
+        window.blit(quit_button.surface(), (quit_button.get_x(), quit_button.get_y()))
     clock.tick(60)
     pygame.display.update()
   
