@@ -23,6 +23,7 @@ corbel_font = pygame.font.SysFont('Corbel',35)
 start_button = LabelText("Start", corbel_font, black, window.get_width() / 2, window.get_height() / 2 - 50 )
 quit_button = LabelText("Quit", corbel_font, black, window.get_width() / 2, start_button.get_y() + start_button.get_height() )
 player = pygame.image.load('resources/player.png')
+player = pygame.transform.scale(player, (50, 50))
 playerX, playerY = 0, 0
 movementSpeed = 5
 game_screen = False
