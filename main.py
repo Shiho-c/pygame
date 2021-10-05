@@ -44,6 +44,10 @@ while run:
                 game_screen = True
             elif quit_button.collision(cursor):
                 run = False
+        if player == window.get_height:
+            playerY == 0
+        if player == window.get_width:
+            playerX == 0
 
     window.fill(background)
     window.blit(start_button.surface(), (start_button.get_x(), start_button.get_y()))
