@@ -21,7 +21,7 @@ pygame.mixer.music.play()
 corbel_font = pygame.font.SysFont('Corbel',35)
   
 start_button = LabelText("Start", corbel_font, black, window.get_width() / 2, window.get_height() / 2 - 50 )
-quit_button = LabelText("Quit", corbel_font, black, window.get_width() / 2, start_button.get_y() + start_button.get_height() )
+quit_button = LabelText("Quit", corbel_font, black, window.get_width() / 2, start_button.get_y() + start_button.get_height() + 50 )
 player = pygame.image.load('resources/player.png')
 player = pygame.transform.scale(player, (50, 50))
 playerX, playerY = 0, 0
@@ -30,9 +30,9 @@ game_screen = False
 # infinite loop  
 run = True 
 while run:
+    cursor = pygame.mouse.get_pos()
     for event in pygame.event.get():  
         if event.type == pygame.MOUSEBUTTONDOWN:
-            cursor = pygame.mouse.get_pos()
             if start_button.collision(cursor):
                 background = (0, 0, 0)
                 game_screen = True
@@ -64,6 +64,14 @@ while run:
         window.blit(player, (playerX, playerY))
         #pygame.draw.rect(window, (255, 0, 0), (playerX, playerY, 50, 50))
     else:
+        if start_button.collision(cursor):
+            start_button.change_color((255,0, 0))
+        elif quit_button.collision(cursor):
+            quit_button.change_color((255,0, 0))
+        
+        else:
+            start_button.change_color((0,0, 0))
+            quit_button.change_color((0,0, 0))
         window.fill(background)
         window.blit(start_button.surface(), (start_button.get_x(), start_button.get_y()))
         window.blit(quit_button.surface(), (quit_button.get_x(), quit_button.get_y()))
