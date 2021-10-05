@@ -39,17 +39,7 @@ while run:
             elif quit_button.collision(cursor):
                 run = False
     key = pygame.key.get_pressed()
-    if key[pygame.K_LEFT]:
-        playerX -= movementSpeed
-    if key[pygame.K_RIGHT]:
-        playerX += movementSpeed
-    if key[pygame.K_UP]:
-        playerY -= movementSpeed
-    if key[pygame.K_DOWN]:
-        playerY += movementSpeed
-    if event.type == pygame.QUIT:  
-        run = False  
-    
+        
     if playerX + player.get_width() >= window_width:
         playerX -= movementSpeed
     elif playerX < 1:
@@ -58,6 +48,17 @@ while run:
         playerY -= movementSpeed
     elif playerY < 1:
         playerY += movementSpeed
+    else:
+        if key[pygame.K_LEFT]:
+            playerX -= movementSpeed
+        if key[pygame.K_RIGHT]:
+            playerX += movementSpeed
+        if key[pygame.K_UP]:
+            playerY -= movementSpeed
+        if key[pygame.K_DOWN]:
+            playerY += movementSpeed
+        if event.type == pygame.QUIT:  
+            run = False  
 
     print(str(playerY))
 
