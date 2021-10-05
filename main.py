@@ -14,7 +14,9 @@ pygame.display.set_caption('Game Testing')
 #load images
 game_screenBackground = pygame.image.load('resources/ground.jpg')
 clock = pygame.time.Clock()
-
+#bgm
+game_bgm = pygame.mixer.music.load('resources/Town 3.mp3')
+pygame.mixer.music.play()
 corbel_font = pygame.font.SysFont('Corbel',35)
   
 start_button = LabelText("Start", corbel_font, black, window.get_width() / 2, window.get_height() / 2 - 50 )
