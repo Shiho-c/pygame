@@ -10,7 +10,7 @@ black = (0, 0, 0)
 window = pygame.display.set_mode((400, 400))  
 pygame.display.set_caption('Game Testing')  
 #load images
-#image = pygame.image.load('resources/ocean.jpg')
+game_screenBackground = pygame.image.load('resources/ground.jpg')
 clock = pygame.time.Clock()
 
 corbel_font = pygame.font.SysFont('Corbel',35)
@@ -49,6 +49,7 @@ while run:
     window.blit(start_button.surface(), (start_button.get_x(), start_button.get_y()))
     window.blit(quit_button.surface(), (quit_button.get_x(), quit_button.get_y()))
     if game_screen:
+        window.blit(game_screenBackground, game_screenBackground.get_rect())
         pygame.draw.rect(window, (255, 0, 0), (playerX, playerY, 50, 50))
     clock.tick(60)
     pygame.display.update()
