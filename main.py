@@ -50,14 +50,16 @@ while run:
     if event.type == pygame.QUIT:  
         run = False  
     
-    if playerX >= window_width/2:
+    if playerX + player.get_width() >= window_width:
         playerX -= movementSpeed
     elif playerX < 1:
         playerX =+ movementSpeed
-    elif playerY >= window_height/2:
+    elif playerY + player.get_height() >= window_height:
         playerY -= movementSpeed
     elif playerY < 1:
         playerY += movementSpeed
+
+    print(str(playerY))
 
     if game_screen:
         window.blit(game_screenBackground, game_screenBackground.get_rect())
