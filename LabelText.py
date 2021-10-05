@@ -3,9 +3,14 @@ import pygame
 class LabelText():
     def __init__(self, text, font, color, x, y):
         self.label = font.render(text, True, color)
+        self.text = text
+        self.font = font
         self.x = x
         self.y = y
 
+    def change_color(self, color):
+        self.label = self.font.render(self.text, True, color)
+        
     def get_height(self):
         return self.label.get_height()
 
