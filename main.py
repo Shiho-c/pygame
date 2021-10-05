@@ -11,7 +11,7 @@ window = pygame.display.set_mode((400, 400))
 pygame.display.set_caption('Game Testing')  
 #load images
 #image = pygame.image.load('resources/ocean.jpg')
-#tite kupal hahaha tite funny
+#tite kupal hahaha tite funny tite intesity <3
 
 corbel_font = pygame.font.SysFont('Corbel',35)
   
