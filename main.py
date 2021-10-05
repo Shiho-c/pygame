@@ -48,7 +48,7 @@ while run:
     window.blit(quit_button.surface(), (quit_button.get_x(), quit_button.get_y()))
     if game_screen:
         pygame.draw.rect(window, (0, 0, 128), player)
-    clock.tick(69)
+    clock.tick(70)
     pygame.display.update()
   
 pygame.quit()          
