@@ -15,7 +15,8 @@ pygame.display.set_caption('Game Testing')
 game_screenBackground = pygame.image.load('resources/ground.jpg')
 clock = pygame.time.Clock()
 #bgm
-game_bgm = pygame.mixer.music.load('resources/Town 3.mp3')
+game_bgm = pygame.mixer.music.set_volume(0.05)
+pygame.mixer.music.load('resources/Town 3.mp3')
 pygame.mixer.music.play()
 corbel_font = pygame.font.SysFont('Corbel',35)
   
