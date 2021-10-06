@@ -13,6 +13,7 @@ window = pygame.display.set_mode((window_height, window_width))
 pygame.display.set_caption('Game Testing')  
 #load images
 game_screenBackground = pygame.image.load('resources/ground.jpg')
+
 clock = pygame.time.Clock()
 #bgm
 game_bgm = pygame.mixer.music.set_volume(0.05)
@@ -26,8 +27,12 @@ quit_button = LabelText("Quit", corbel_font, black, window.get_width() / 2, opti
 player = pygame.image.load('resources/player.png')
 player = pygame.transform.scale(player, (50, 50))
 playerX, playerY = 0, 0
+optionX = 0
+optionY = 0
+option_screenBackground = pygame.draw.rect(window, (255, 0, 0),(optionX, optionY, 0, 0))
 movementSpeed = 5
 game_screen = False
+option_screen = False
 # infinite loop  
 run = True 
 while run:
@@ -36,14 +41,21 @@ while run:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if start_button.collision(cursor):
                 background = (0, 0, 0)
+                
                 pygame.mixer.music.stop()
                 game_screen = True
             elif quit_button.collision(cursor):
                 pygame.mixer.music.stop()
                 run = False
-        
+            elif option_button.collision(cursor):
+                option_screen = False
+                
+            
+                
+
+
     if playerX + player.get_width() >= window_width:
-        playerX -= movementSpeed
+         playerX -= movementSpeed
     elif playerX < 1:
         playerX =+ movementSpeed
     elif playerY + player.get_height() >= window_height:
@@ -63,11 +75,16 @@ while run:
         if event.type == pygame.QUIT:  
             run = False  
 
-
-    if game_screen:
+   
+    if game_screen == True:
         window.blit(game_screenBackground, game_screenBackground.get_rect())
         window.blit(player, (playerX, playerY))
+        
         #pygame.draw.rect(window, (255, 0, 0), (playerX, playerY, 50, 50))
+    elif option_screen == True:
+        window.blit(option_screenBackground,option_screenBackground.get_rect())
+        pygame.draw.rect(window, (255, 0, 0), (optionX, optionY, 50, 50))
+        #print('test')
     else:
         if start_button.collision(cursor):
             start_button.change_color((255,0, 0))
@@ -88,4 +105,3 @@ while run:
     pygame.display.update()
   
 pygame.quit()          
-#push 
